@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './App';
+import ItemList from './ItemList';
 
 const render = Component => {
   ReactDOM.render(
@@ -12,10 +12,10 @@ const render = Component => {
   );
 };
 
-render(App);
+render(ItemList);
 
 if (module.hot) {
-  module.hot.accept('./App', () => {
+  module.hot.accept('./ItemList', () => {
     render(App);
   });
 }
