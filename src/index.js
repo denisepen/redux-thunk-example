@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
-import ItemList from './ItemList';
+import configureStore from './store/configureStore';
+
+import ItemList from './components/ItemList';
+
+const store = configureStore();
 
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Provider store={store}>
+        <Component />
+      </Provider>
     </AppContainer>,
     document.getElementById('app'),
   );
@@ -15,7 +22,7 @@ const render = Component => {
 render(ItemList);
 
 if (module.hot) {
-  module.hot.accept('./ItemList', () => {
+  module.hot.accept('./components/ItemList', () => {
     render(App);
   });
 }
